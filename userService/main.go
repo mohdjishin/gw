@@ -1,0 +1,19 @@
+package main
+
+import (
+	"log"
+	"net/http"
+	"user_service/ecdsaops"
+	"user_service/server"
+)
+
+func main() {
+	publicKey, err := ecdsaops.LoadECDSAPublicKey("/home/muhammedjishinjamaltcp/Key_pairs/ecdsa/public.pem")
+	if err != nil {
+		log.Fatalf("Failed to load public key: %v", err)
+	}
+
+	http.Handle("/users", server.SignatureVerificationMiddleware(publicKey)(http.HandlerFunc(server.GetUsers)))
+	log.Println("User Service is running on port 8081...")
+	log.Fatal(http.ListenAndServe(":8081", nil))
+}
