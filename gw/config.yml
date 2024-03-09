@@ -1,7 +1,7 @@
 services:
   - name: UserService
-    url: http://localhost:8081
+    url: http://us:8082
   - name: ProductService
-    url: http://localhost:8082
+    url: http://ps:8082
 
-private-key-path: /home/muhammedjishinjamaltcp/Key_pairs/ecdsa/ec-priv.pem
+private-key-path: ec-priv.pem
