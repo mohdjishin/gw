@@ -14,6 +14,6 @@ func main() {
 	}
 
 	http.Handle("/users", server.SignatureVerificationMiddleware(publicKey)(http.HandlerFunc(server.GetUsers)))
-	log.Println("User Service is running on port 8081...")
-	log.Fatal(http.ListenAndServe(":8081", nil))
+	log.Println("User Service is running on port 8082...")
+	log.Fatal(http.ListenAndServe(":8082", nil))
 }
