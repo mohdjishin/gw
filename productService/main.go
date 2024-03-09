@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	publicKey, err := ecdsaops.LoadECDSAPublicKey("/home/muhammedjishinjamaltcp/Key_pairs/ecdsa/public.pem")
+	publicKey, err := ecdsaops.LoadECDSAPublicKey("public.pem")
 	if err != nil {
 		log.Fatalf("Failed to load public key: %v", err)
 	}
