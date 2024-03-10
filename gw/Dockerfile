@@ -1,4 +1,4 @@
-FROM golang:latest 
+FROM golang:latest AS builder
 
 WORKDIR /app
 
@@ -8,6 +8,10 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o gw
+RUN CGO_ENABLED=0 go build -o gw
+
+FROM alpine:latest
+
+COPY --from=builder /app/gw /app/config.yml /app/ec-priv.pem ./
 EXPOSE 8080
 CMD [ "./gw" ]
