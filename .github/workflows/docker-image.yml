@@ -16,4 +16,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker compose up --build -d
+    - name: Test ProductService
+      run: |
+        curl --fail http://localhost:8080/ProductService/products || (echo "ProductService test failed" && exit 1)
+    - name: Test UserService
+      run: |
+        curl --fail http://localhost:8080/UserService/users || (echo "UserService test failed" && exit 1)
       
