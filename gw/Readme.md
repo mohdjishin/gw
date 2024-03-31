@@ -12,7 +12,7 @@ This README provides instructions on how to test the API Gateway. The gateway is
 Make sure the API Gateway is running by executing the Go application:
 
 ```shell
-go run gateway.go
+go run *.go
 ```
 
 This starts the API Gateway on http://localhost:8080.
